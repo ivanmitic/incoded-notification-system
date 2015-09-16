@@ -52,3 +52,15 @@ And, in the application, it is under namespace:
 Incoded\Notification
 ```
 
+Detailed code tree looks like this:
+
+
+```
+/src/Incoded/Notification/
+├── Database/
+│   ├── Model/
+│   │   ├── NotificationModel.php
+└── Form/
+    ├── NotificationForm.php
+```
+
