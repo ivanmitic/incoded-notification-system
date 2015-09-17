@@ -32,6 +32,10 @@ Upload your solution on GitHub and provide us link to your repository. Good luck
 Disclaimer: Your code will be used ONLY for evaluating your development skill set, and not for any other purpose.
 
 
+## Installation
+
+TO DO ...
+
 
 ## Databse Diagram
 
@@ -63,4 +67,3 @@ Detailed code tree looks like this:
 └── Form/
     ├── NotificationForm.php
 ```
-
