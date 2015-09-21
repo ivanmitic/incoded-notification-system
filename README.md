@@ -1,10 +1,11 @@
 # Notifications System
 
-## Installation
+## Installation and Setup
 
 To install database and data required for test, do the following:
 
-+ Find `~/app/config/databse.php` and change database connection parameters
++ Create a virtual host and point it's Document Root to directory `~/public`
++ Create new database, find `~/app/config/databse.php` and change database connection parameters
 + In the root of the project, locate `install.php` and exectute it `php install.php`
 
 
