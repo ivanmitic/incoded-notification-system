@@ -1,0 +1,314 @@
+/* fonts */
+@import url(https://fonts.googleapis.com/css?family=Dosis:400,200,300,500,600,700,800&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400italic,700,700italic&subset=latin,latin-ext);
+
+/* globals */
+html, body {
+  height: 100%;
+  padding-top: 31px;
+  background: #efefef;
+  font-family: "Dosis", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  color: #000;
+  /*background-image: url("/bundles/incodedfrontend/images/bg-pattern.jpg") */
+  /*background-position: center top */
+  /*background-repeat: repeat */
+  /*background-size: 128px 128px */
+  /*-webkit-background-size: 128px 128px */
+  /*-moz-background-size: 128px 128px */
+}
+
+h1 {
+  font-family: "Dosis", Helvetica, Arial, sans-serif;
+  color: #428bca;
+}
+h1 small {
+  font-family: "Dosis", Helvetica, Arial, sans-serif;
+}
+h1.title {
+  padding: 40px 10px;
+  font-weight: bold;
+  color: #777;
+}
+h1.title small {
+  /*text-transform: lowercase */
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: "Dosis", Helvetica, Arial, sans-serif;
+}
+
+article {
+  margin-bottom: 50px;
+  padding: 12px 15px;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+}
+
+/* footer */
+footer {
+  height: 31px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  text-align: center;
+  color: #999;
+}
+footer p {
+  margin: 0;
+  padding: 5px 0;
+  border-top: 1px solid #eee;
+  font-family: "Dosis", Helvetica, Arial, sans-serif;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  margin: 0 auto -31px;
+  /* negative indent footer by its height */
+  padding: 0 0 31px;
+  /* pad bottom by footer height */
+}
+
+/*@media (min-width: 768px) {
+ *    .container {
+ *        max-width: 730px;
+ *    }
+ *} */
+.jumbotron .fa-eye, .jumbotron .fa-qrcode {
+  font-size: 32px;
+  color: #333;
+}
+
+/* navigation */
+
+.navbar-brand {
+  font-family: "Ubuntu","Courier New",monospace;
+  font-size: 28px;
+}
+.nav-pills > li > a {
+  padding: 17px 18px;
+  border-radius: 0px;
+  font-family: "Ubuntu","Courier New",monospace;
+  font-size: 12px;
+  /*font-weight: bold;*/
+  text-transform: uppercase;
+}
+.nav-pills > li > a > i {
+  font-size: 16px;
+}
+
+/* tables */
+.table {
+  background-color: #fff;
+  border-radius: 4px;
+}
+.table thead > tr > th {
+  border-bottom: 1px solid #ddd;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.table input[type="radio"], .table input[type="checkbox"] {
+  margin: 2px 0 0;
+}
+
+/* icons */
+.icon-ghost {
+  font-size: 100px;
+  font-weight: bold;
+  color: #428bca;
+}
+
+/* labels */
+.label {
+  padding: 0.3em 0.6em 0.3em;
+  font-family: Dosis, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  color: #333;
+}
+.label a {
+  color: #fff;
+}
+
+.label-default {
+  font-size: 14px;
+  background-color: #428bca;
+  color: #fff;
+}
+
+.label-success {
+  font-size: 14px;
+  color: #fff;
+}
+
+.table .label {
+  font-family: "Dosis", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+}
+
+/* code */
+pre {
+  font-family: "Ubuntu Mono", "Courier New", monospace;
+  color: #fff;
+  background-color: #333;
+}
+
+code {
+  display: inline-block;
+  white-space: pre;
+  line-height: 1.42857;
+}
+
+/* form */
+.form-control {
+  padding: 6px 8px;
+}
+
+label {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+/* buttons */
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+
+.open .dropdown-toggle.btn-default {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+
+/* article */
+article {
+  background-color: #fff;
+}
+article.markdown h1 {
+  color: #000;
+}
+article.markdown table {
+  width: 100%;
+}
+article.markdown table > thead > tr {
+  border-top-color: #cccccc;
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+article.markdown table > thead > tr > th {
+  border-bottom-color: #cccccc;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: #cccccc;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: #cccccc;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-color: #cccccc;
+  border-top-style: solid;
+  border-top-width: 1px;
+  padding-bottom: 6px;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 6px;
+}
+article.markdown table > tbody > tr {
+  border-top-color: #cccccc;
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+article.markdown table > tbody > tr > td {
+  border-bottom-color: #cccccc;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: #cccccc;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: #cccccc;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-color: #cccccc;
+  border-top-style: solid;
+  border-top-width: 1px;
+  padding-bottom: 6px;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 6px;
+}
+article.markdown hr {
+  border-top: 1px solid #ccc;
+}
+
+/* breadcrumb */
+.breadcrumb {
+  background-color: #fff;
+}
+
+/* misc */
+/* scroll-to-top button */
+.isot {
+  position: fixed;
+  bottom: 1em;
+  padding-right: 1em;
+  right: 0;
+  display: none;
+  z-index: 999;
+  cursor: pointer;
+}
+
+/* tags with close tag */
+.tag-manager .close {
+  font-size: 14px;
+  color: #666;
+  text-shadow: none;
+  opacity: 1;
+}
+
+.tag {
+  display: inline;
+  padding: 0.3em 0.6em 0.3em;
+  font-size: 75%;
+  font-weight: normal;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25em;
+}
+
+.tag-primary {
+  background-color: #428bca;
+}
+
+.tag-success {
+  background-color: #5cb85c;
+}
+
+.tag .btn {
+  float: right;
+}
+
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+
+/*# sourceMappingURL=main.css.map */
