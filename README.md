@@ -51,5 +51,5 @@ Services contains all classes made to send notifications. It's done by Dispatche
 
 `NotificationDispatcher::release($user_id, $notification_code, $post_id);`
 
-* * The usage of Notification System in the application can be found in the controller:*
+*The usage of Notification System in the application can be found in the controller:*
 `~/resources/Humanity/Notifications/Controller/Website.php`
