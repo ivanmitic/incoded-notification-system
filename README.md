@@ -4,7 +4,7 @@
 
 To install database and data required for test, do the following:
 
-+ Find `~/app/config/databse.php` and change database connection parametres
++ Find `~/app/config/databse.php` and change database connection parameters
 + In the root of the project, locate `install.php` and exectute it `php install.php`
 
 
@@ -38,3 +38,20 @@ And, in the application, it is under namespace:
 ```
 Incoded\Notification
 ```
+
+### Collections and Models
+
+Under that namespace, there are database models and collections made to transform database entity records to PHP objects over database layer object.
+
+### Form
+
+Also, threre are form classes made to display notification forms on the frontend.
+
+### Services
+
+Services contains all classes made to send notifications. It's done by Dispatcher class and abstract Service class. Here's an example of releasing an notification:
+
+`NotificationDispatcher::release($user_id, $notification_code, $post_id);`
+
+All code that use Notification system can be found here `~/resources/Humanity/Notifications/Controller/Website.php`
+
