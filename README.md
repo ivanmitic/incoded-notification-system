@@ -1,5 +1,6 @@
 # Notifications System
 
+
 ## Specification
 
 Design a component responsible for notifying user of certain actions that may occur in some application. For example, 
@@ -34,7 +35,10 @@ Disclaimer: Your code will be used ONLY for evaluating your development skill se
 
 ## Installation
 
-TO DO ...
+To install database and data required for test, do the following:
+
++ Find `app/config/databse.php` and change database connection parametres
++ In the root of the project, locate `install.php` and exectute it `php install.php`
 
 
 ## Databse Diagram
@@ -44,26 +48,26 @@ TO DO ...
 
 ## Code Structure
 
+Notificatation System is made as a part of a custom PHP framework (made by myself). The framework is created in MVC concept and here are some basics about it's code structure.
+
+`~/app` directory contains main configuration files and application launcher and autoloader.
+
+`~/public` directory should be set as Document Root and contains index.php, .htaccess, css, javascript, images etc.
+
+`~/resources` contains PHP classes and files that supports MVC concept like Controllers, Views and it basically runs the application.
+
+`~/src` contains the code of the framework and the Notification System classes but the idea is to keep all additional resources like Blog, Admin Panel etc.
+
+## Notificatation System Code Structure
+
 Classes are located under this location: 
 
 ```
-/src/Incoded/Notification/
+~/src/Incoded/Notification/
 ```
 
 And, in the application, it is under namespace:
 
 ```
 Incoded\Notification
-```
-
-Detailed code tree looks like this:
-
-
-```
-/src/Incoded/Notification/
-├── Database/
-│   ├── Model/
-│   │   ├── NotificationModel.php
-└── Form/
-    ├── NotificationForm.php
 ```
