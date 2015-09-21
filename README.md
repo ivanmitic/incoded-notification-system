@@ -37,6 +37,10 @@ And, in the application, it is under namespace:
 Incoded\Notification
 ```
 
+The usage of Notification System in the application can be found in the controller:
+
+`~/resources/Humanity/Notifications/Controller/Website.php`
+
 ### Collections and Models
 
 Under that namespace, there are database models and collections made to transform database entity records to PHP objects over database layer object.
@@ -50,6 +54,3 @@ Form classes are made to display Notification System forms on the frontend.
 Services contains all classes made to send notifications. It's done by Dispatcher class. Here's an example of releasing a notification:
 
 `NotificationDispatcher::release($user_id, $notification_code, $post_id);`
-
-*The usage of Notification System in the application can be found in the controller:*
-`~/resources/Humanity/Notifications/Controller/Website.php`
