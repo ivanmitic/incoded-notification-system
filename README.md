@@ -43,7 +43,7 @@ The usage of Notification System in the application can be found in the controll
 
 ### Collections and Models
 
-Under that namespace, there are database models and collections made to transform database entity records to PHP objects over database layer object.
+Under `Incoded\Notification` namespace, there are database models and collections made to transform database entity records to PHP objects over database layer object.
 
 ### Form
 
