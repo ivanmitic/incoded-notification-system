@@ -1,5 +1,3 @@
-<pre><?php print_r($notification) ?></pre>
-
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -38,15 +36,12 @@
 
     <div class="clearfix">&nbsp;</div>
 
+    <form role="form" action="/admin/notifications/edit/<?= $notification_id ?>" method="post">
     <div class="row">
-        <div class="col-sm-12">
-            <form role="form" action="/notifications_edit" method="post">
+        <div class="col-sm-6">
+            <fieldset>
+                <legend>Content</legend>
                 <?php $form->showHidden() ?>
-                <div class="form-group<?php echo $form->hasError('entity_type_id') ? ' has-error' : '' ?>">
-                    <label>Entity: *</label>
-                    <?php echo $form['entity_type_id']->show(array('class' => 'form-control')) ?> 
-                    <?php if ($form->hasError('entity_type_id')) : ?><span class="help-block"><?php echo $form->getError('entity_type_id') ?></span><?php endif ?>
-                </div>
                 <div class="form-group<?php echo $form->hasError('code') ? ' has-error' : '' ?>">
                     <label>Code: *</label>
                     <?php echo $form['code']->show(array('class' => 'form-control')) ?> 
@@ -62,8 +57,34 @@
                     <?php echo $form['body']->show(array('class' => 'form-control', 'rows' => '10')) ?> 
                     <?php if ($form->hasError('body')) : ?><span class="help-block"><?php echo $form->getError('body') ?></span><?php endif ?>
                 </div>
-                <button type="submit" class="btn btn-default">Send</button>
-            </form>
+            </fieldset>
+        </div>
+        <div class="col-sm-6">
+            <fieldset>
+                <legend>Relations</legend>
+                <div class="form-group<?php echo $form->hasError('entity_data_id') ? ' has-error' : '' ?>">
+                    <label>Entity: *</label>
+                    <?php echo $form['entity_data_id']->show(array('class' => 'form-control')) ?> 
+                    <?php if ($form->hasError('entity_data_id')) : ?><span class="help-block"><?php echo $form->getError('entity_data_id') ?></span><?php endif ?>
+                </div>
+                <div class="form-group<?php echo $form->hasError('entity_service_id') ? ' has-error' : '' ?>">
+                    <label>Services: *</label>
+                    <?php echo $form['entity_service_id']->show(array('class' => 'form-control', 'multiple' => 'multiple')) ?> 
+                    <?php if ($form->hasError('entity_service_id')) : ?><span class="help-block"><?php echo $form->getError('entity_service_id') ?></span><?php endif ?>
+                </div>
+                <div class="form-group<?php echo $form->hasError('user_type_id') ? ' has-error' : '' ?>">
+                    <label>User Types: *</label>
+                    <?php echo $form['user_type_id']->show(array('class' => 'form-control', 'multiple' => 'multiple')) ?> 
+                    <?php if ($form->hasError('user_type_id')) : ?><span class="help-block"><?php echo $form->getError('user_type_id') ?></span><?php endif ?>
+                </div>
+            </fieldset>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a class="btn btn-default" href="/admin/notifications">Back</a>
+        </div>
+    </div>
+    </form>
 </div>

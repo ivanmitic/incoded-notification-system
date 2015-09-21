@@ -305,12 +305,46 @@ JOIN `entity_model` ON `notification_service`.`entity_model_id` = `entity_model`
      */
     public function admin_notifications_edit(Request $request)
     {
-        $router = $this->getModel()->router;
+        $session = $this->getModel()->session;
+        $router  = $this->getModel()->router;
 
         if ($this->user_type != 'admin') {
             // user has no credential to access this page
             $router->redirect('404');
         }
+
+        $notification = new NotificationModel($request->get('id'));
+        $form         = new NotificationForm($notification->getValues());
+        $success      = false;
+
+        if ('POST' === $request->getMethod()) {
+            // get form values
+            $form->setValues(array(
+                'csrf_token'      => $request->post('csrf_token'),
+                'entity_model_id' => $request->post('entity_model_id'),
+                'code'            => $request->post('code'),
+                'title'           => $request->post('title'),
+                'body'            => $request->post('body'),
+            ));
+
+            // check if form is valid
+            if ($form->isValid()) {
+                // create new notification model
+                $notification = new NotificationModel();
+                $notification->setValues($form->getValues());
+                $notification->save();
+
+                // save notification code into the session
+                $session->set('notification_created', $request->post('code'));
+
+                // redirect to the list of notifications
+                $router->redirect('admin_notifications');
+            }
+        }
+
+        $this->notification_id = $request->get('id');
+        $this->form            = $form;
+        $this->success         = $success;
 
         $this->show('admin/notifications_edit');
     }

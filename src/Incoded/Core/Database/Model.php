@@ -11,6 +11,8 @@ abstract class Model
 
     private $pk = null;
 
+    private $pk_column = 'id';
+
     private $is_new = true;
 
     private $columns = array();
@@ -24,6 +26,7 @@ abstract class Model
         $this->init();
 
         if ($pk) {
+            $this->setPk($pk);
             $this->loadModel($pk);
         }
     }
@@ -34,14 +37,14 @@ abstract class Model
     {
         $values = $this->getValues();
 
-        if ( isset($values[$this->getPk()]) ) {
-            unset($values[$this->getPk()]);
+        if ( isset($values[$this->getPkColumn()]) ) {
+            unset($values[$this->getPkColumn()]);
         }
 
         if ($this->getIsNew()) {
             $this->db->insert($values);
         } else {
-            $this->db->update($values, 'id=1');
+            $this->db->update($values, $this->getPkColumn() . '=' . $pk);
         }
 
         $this->db->table($this->getTable())->execute();
@@ -51,7 +54,7 @@ abstract class Model
     {
         $this->db->select()
             ->table($this->getTable())
-            ->where($this->getPk() . '=' . $pk)
+            ->where($this->getPkColumn() . '=' . $pk)
             ->execute();
 
         $this->setValues($this->db->fetch());
@@ -77,6 +80,16 @@ abstract class Model
     public function getPk()
     {
         return $this->pk;
+    }
+
+    public function setPkColumn($column)
+    {
+        $this->pk_column = $column;
+    }
+
+    public function getPkColumn()
+    {
+        return $this->pk_column;
     }
 
     public function setIsNew($is_new)

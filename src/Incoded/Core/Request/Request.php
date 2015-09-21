@@ -52,6 +52,11 @@ class Request
         return isset($this->params[$method][$index]) ? trim($this->params[$method][$index]) : null;
     }
 
+    public function setParam($index, $value, $method = 'GET')
+    {
+        $this->params[$method][$index] = $value;
+    }
+
     public function getMethod()
     {
         return $this->method;

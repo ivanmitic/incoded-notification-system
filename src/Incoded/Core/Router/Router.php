@@ -12,7 +12,7 @@ class Router
         $is_404 = true,
         $route  = null,
         $routes = array(
-            'home'                     => array('uri' => '/', 'controller' => 'website', 'method' => 'index'),
+            'home'                     => array('uri' => '/',        'controller' => 'website', 'method' => 'index'),
             'by_method'                => array('uri' => '/:method', 'controller' => 'website'),
             'by_controller_and_method' => array('uri' => '/:controller/:method'),
         );
@@ -55,42 +55,73 @@ class Router
 
     private function findRoute()
     {
-        $requested_uri = $this->request->getUri();
+        $routes        = $this->getRoutes();
+        $requested_uri = ltrim($this->request->getUri(), '/');
+        $requested_uri_chunks       = explode('/', $requested_uri);
+        $requested_uri_chunks_count = count($requested_uri_chunks);
 
-        foreach ($this->getRoutes() as $route => $properties)
-        {
-            $uri = $properties['uri'];
+        // try to match requested uri with default routes
+        if ( $requested_uri == '' ) {
+            // home route
+            $this->route  = array('home' => $routes['home']);
+            $this->method = $routes['home']['method'];
+            $this->is_404 = false;
 
-            if (isset($properties['controller'])) {
-                $uri = str_replace(':controller', $properties['controller'], $uri);
-            }
+            // add method and controller into the request as get params
+            $this->request->setParam('method', $this->method);
+            $this->request->setParam('controller', $routes['home']['controller']);
 
-            if (isset($properties['method'])) {
-                $uri = str_replace(':method', $properties['method'], $uri);
-            }
+            return true;
+        }
+        else if ( $requested_uri_chunks_count == 1 ) {
+            // by_method route
+            $this->route  = array('by_method' => $routes['by_method']);
+            $this->method = $requested_uri_chunks[0];
+            $this->is_404 = false;
 
-            // if (strpos($uri, ':method') !== false) {
-            //     $uri = str_replace(':method', $properties['method'], $uri);
-            // }
+            // add method and controller into the request as get params
+            $this->request->setParam('method', $this->method);
+            $this->request->setParam('controller', $routes['by_method']['controller']);
 
-            if ($uri == $requested_uri) {
-                $this->route  = array($route => $properties);
-                $this->method = isset($properties['method']) ? $properties['method'] : ltrim($this->requested_uri, '/');
-                $this->is_404 = false;
-                break;
-            }
-
-            if ($route == 'default') {
-                $this->route  = array($route => $properties);
-                $this->method = ltrim(str_replace(':method', ltrim($this->requested_uri, '/'), $properties['uri']), '/');
-                $this->is_404 = false;
-                break;
-            }
+            return true;
         }
 
-        // if ($this->is_404) {
-        //     $this->method = 'error404';
-        // }
+        // try to match requested uri with defined routes and
+        // collect get parameters for request
+        foreach ($routes as $route => $properties)
+        {
+            $uri              = ltrim($properties['uri'], '/');
+            $uri_chunks       = explode('/', $uri);
+            $uri_chunks_count = count($uri_chunks);
+
+            // skip route if it's different by number of chunks
+            if ( $requested_uri_chunks_count != $uri_chunks_count ) continue;
+
+            foreach ($uri_chunks as $uri_chunk_index => $uri_chunk)
+            {
+                if ( ':' != substr($uri_chunk, 0, 1) ) {
+                    // skip route if chunk is different then requested uri chunk
+                    if ( $uri_chunk != $requested_uri_chunks[$uri_chunk_index] ) continue 2;
+                }
+                else {
+                    // add variable into request
+                    $this->request->setParam(ltrim($uri_chunk, ':'), $requested_uri_chunks[$uri_chunk_index]);
+                }
+            }
+
+            // route found
+            $this->route  = array($route => $properties);
+            $this->method = $properties['method'];
+            $this->is_404 = false;
+
+            // add method and controller into the request as get params
+            $this->request->setParam('method', $this->method);
+            $this->request->setParam('controller', $properties['controller']);
+
+            break;
+        }
+
+        return false;
     }
 
     public function redirect($url = '')
