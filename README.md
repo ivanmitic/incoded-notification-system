@@ -45,7 +45,7 @@ Under that namespace, there are database models and collections made to transfor
 
 ### Form
 
-Also, threre are form classes made to display notification forms on the frontend.
+Also, there are form classes made to display notification forms on the frontend.
 
 ### Services
 
@@ -53,5 +53,5 @@ Services contains all classes made to send notifications. It's done by Dispatche
 
 `NotificationDispatcher::release($user_id, $notification_code, $post_id);`
 
-All code that use Notification system can be found here `~/resources/Humanity/Notifications/Controller/Website.php`
+The usage of Notification system in the application can be found here `~/resources/Humanity/Notifications/Controller/Website.php`
 
